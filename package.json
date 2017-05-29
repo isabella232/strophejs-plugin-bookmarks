@@ -1,0 +1,19 @@
+{
+  "name": "strophejs-plugin-bookmarks",
+  "version": "1.0.0",
+  "description": "This plugin implements XEP-0048.",
+  "main": "strophe.bookmarks.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strophe/strophejs-plugin-bookmarks.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strophe/strophejs-plugin-bookmarks/issues"
+  },
+  "homepage": "https://github.com/strophe/strophejs-plugin-bookmarks#readme"
+}
