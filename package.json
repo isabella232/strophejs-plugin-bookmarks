@@ -1,6 +1,6 @@
 {
   "name": "strophejs-plugin-bookmarks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This plugin implements XEP-0048.",
   "main": "lib/strophe.bookmarks.js",
   "scripts": {
