@@ -1,3 +1,5 @@
+import { $iq, Strophe } from 'strophe.js';
+
 Strophe.addConnectionPlugin('bookmarks', {
 	init : function(connection) {
 		this.connection = connection;
@@ -6,7 +8,7 @@ Strophe.addConnectionPlugin('bookmarks', {
 		Strophe.addNamespace('PRIVACY', 'jabber:iq:privacy');
 		Strophe.addNamespace('DELAY', 'jabber:x:delay');
 		Strophe.addNamespace('PUBSUB', 'http://jabber.org/protocol/pubsub');
-		
+
 	},
 	/**
 	 * Create private bookmark node.
@@ -47,7 +49,7 @@ Strophe.addConnectionPlugin('bookmarks', {
 	 * @param {string} roomJid - The JabberID of the chat roomJid
 	 * @param {string} [alias] - A friendly name for the bookmark
 	 * @param {string} [nick] - The users's preferred roomnick for the chatroom
-	 * @param {boolean} [autojoin=false] - Whether the client should automatically join 
+	 * @param {boolean} [autojoin=false] - Whether the client should automatically join
 	 * the conference room on login.
 	 * @param {function} [success] - Callback after success
 	 * @param {function} [error] - Callback after error
@@ -94,18 +96,18 @@ Strophe.addConnectionPlugin('bookmarks', {
 				};
 				var roomName = confs[i].getAttribute('name');
 				var nickname = confs[i].getElementsByTagName('nick');
-				
+
 				if (conferenceAttr.jid === roomJid) {
 					// the room is already bookmarked, then update it
 					bookmarked = true;
-					
+
 					conferenceAttr.autojoin = autojoin || false;
-					
+
 					if (alias) {
 						conferenceAttr.name = alias;
 					}
 					stanza.c('conference', conferenceAttr);
-					
+
 					if (nick) {
 						stanza.c('nick').t(nick).up();
 					}
@@ -114,15 +116,15 @@ Strophe.addConnectionPlugin('bookmarks', {
 						conferenceAttr.name = roomName;
 					}
 					stanza.c('conference', conferenceAttr);
-				
+
 					if (nickname.length === 1) {
 						stanza.c('nick').t(nickname[0].innerHTML).up();
 					}
 				}
-				
+
 				stanza.up();
 			}
-			
+
 			bookmarkGroupChat(!bookmarked);
 		}, function(s) {
 			if (s.getElementsByTagName('item-not-found').length > 0) {
@@ -150,8 +152,8 @@ Strophe.addConnectionPlugin('bookmarks', {
 	/**
 	 * Delete the bookmark with the given roomJid in the bookmark storage.
 	 *
-	 * The whole remote bookmark storage is just updated by removing the 
-	 * bookmark corresponding to the specified room. 
+	 * The whole remote bookmark storage is just updated by removing the
+	 * bookmark corresponding to the specified room.
 	 *
 	 * @param {string} roomJid - The JabberID of the chat roomJid you want to remove
 	 * @param {function} [success] - Callback after success
